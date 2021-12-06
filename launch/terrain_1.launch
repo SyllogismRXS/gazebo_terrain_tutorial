@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="world_name" default="terrain_1"/>
+
+  <!-- Robot pose -->
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find gazebo_terrain_tutorial)/worlds/$(arg world_name).world"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+
+  <!-- Convert an xacro to URDF and put on parameter server -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro.py $(find husky_description)/urdf/husky.urdf.xacro" />
+
+  <!-- Spawn the robot from the URDF that was loaded into the robot_description
+       parameter -->
+  <node name="spawn_urdf"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        args="-param robot_description -urdf
+              -x $(arg x) -y $(arg y) -z $(arg z)
+              -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)
+              -model my_husky"/>
+
+</launch>
