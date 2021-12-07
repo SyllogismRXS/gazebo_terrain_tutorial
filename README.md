@@ -1,9 +1,10 @@
 # Gazebo Terrain Tutorial
 
-This package is part of a tutorial to demonstrate how custom terrain can be
-created in Blender and used in Gazebo simulations. This ROS package provides
-the launch, world, and model files to load the custom terrain into Gazebo and
-spawn a Clearpath Husky robot onto the terrain.
+This package is part of a [YouTube tutorial](https://youtu.be/GNbH8Pf7nGk) to
+demonstrate how custom terrain can be created in Blender and used in Gazebo
+simulations. This ROS package provides the launch, world, and model files to
+load the custom terrain into Gazebo and spawn a Clearpath Husky robot onto the
+terrain.
 
 ![Custom terrain and husky screenshot](screenshot.png)
 
